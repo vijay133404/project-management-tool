@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Project type:</strong>
+  <%= @project.project_type %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= image_tag @project.document %>
+</p>
+
+<p>
+  <strong>Technology:</strong>
+  <%= @project.technology %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @project.start_date %>
+</p>
+<p>
+  <strong>End date:</strong>
+  <%= @project.end_date %>
+</p>
+
+ <% if @project.tasks.first.present? %>
+ <%= render 'tasks/show'%>
+ <%end%>
+ <%= render 'tasks/form'%>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

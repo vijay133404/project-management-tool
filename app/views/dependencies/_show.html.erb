@@ -1,0 +1,9 @@
+
+<% @task.dependencies.each do |dependency| %>
+    <p>
+     <strong> Dependency:-</strong> <%= dependency.name%>
+     <%= link_to 'Edit_dependency', edit_project_task_dependency_path(@project,@task,dependency) %>||
+     <td><%= link_to 'Destroy_dependency', project_task_dependency_path(@project,@task,dependency), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+   </p>
+     
+   <% end %>

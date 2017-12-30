@@ -1,0 +1,14 @@
+<% @project.tasks.each do |task| %>
+    <p>
+     <% @task = task%>
+     <strong> Task:- </strong> <%= task.name%>
+     
+     <%= link_to 'Edit_task', edit_project_task_path(@project,task) %>||
+     <td><%= link_to 'Destroy_task', project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+   </p>
+   <% if @task.dependencies.first.present? %>
+    <%= render 'dependencies/show'%>
+     
+     <%end%>
+    <%= render 'dependencies/form'%>
+   <% end %>
