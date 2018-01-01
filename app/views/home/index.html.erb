@@ -8,3 +8,18 @@
 <li>
   <%= link_to 'create team',new_team_path %>
 </li>
+<%if Team.first.present?%>
+<li>
+<%= link_to 'Add Team Members', add_member_path %>
+</li>
+<li>
+<%= link_to 'Team and Members', team_members_path %>
+</li>
+<li>
+<%= link_to 'assign_project_to_team', assign_project_team_path %>
+</li>
+<li>
+<%= link_to 'all_team_project', all_team_project_path %>
+</li>
+
+<%end%>

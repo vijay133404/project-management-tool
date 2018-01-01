@@ -1,0 +1,20 @@
+
+<%@teams.each do |team|%>
+<p>
+  <strong>Team:</strong>
+  <%= team.name %>
+</p>
+<%if team.projects.first.present?%>
+<%team.projects.each do |project|%>
+<p>
+  <strong>Project:</strong>
+  <%= project.name %>
+</p>
+<%end%>
+<%end%>
+<%end%>
+
+
+<p>
+<%= link_to 'Back', root_path %>
+</p>
