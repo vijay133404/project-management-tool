@@ -36,10 +36,11 @@ class HomeController < ApplicationController
     end
     
     def assign_project_member_form
+
         @team = current_user.team
     end
     
     def assign_project_member
-        
+        @project_user = ProjectUser.create(user_id: params[:member],project_id:params[:project])
     end
 end
