@@ -13,26 +13,35 @@ class HomeController < ApplicationController
     if params[:member].present?
     User.find(params[:member]).update(team_id: params[:team_member][:team_id])
   end
-    @teams  =Team.all
+    @teams  = Team.all
   end
      
     def team_and_members
-      @teams  =Team.all
+      @teams  = Team.all
     end
-    def assign_project_team_form
 
+    def assign_project_team_form
      @projects = Project.all
-     @teams  =Team.all
-     
+     @teams  = Team.all
     end
 
     def submit_project_to_team
-
         ProjectTeam.create(project_id: params[:assign_team_project][:project_id],team_id: params[:team])
-       
-       @teams  =Team.all
+       @teams  = Team.all
+
     end
+
     def all_team_project
-       @teams  =Team.all
+       @teams  = Team.all
+    end
+    
+    def assign_project_member_form
+       @teams = Team.all 
+       @users =  User.all
+       @projects = Project.all
+    end
+    
+    def assign_project_member
+
     end
 end

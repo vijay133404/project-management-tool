@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   get 'assign/project/team', :to => 'home#assign_project_team_form'
   post 'submit/project/team', :to => 'home#submit_project_to_team'
   get 'all_team_project', :to => 'home#all_team_project'
+  get 'assign_project_member_form', :to => 'home#assign_project_member_form'
+  post 'assign_project_member',:to=>'home#assign_project_member'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180101090321) do
+ActiveRecord::Schema.define(version: 20180102062940) do
 
   create_table "dependencies", force: :cascade do |t|
     t.string "name"
@@ -39,6 +39,15 @@ ActiveRecord::Schema.define(version: 20180101090321) do
     t.date "start_date"
     t.date "end_date"
     t.float "project_cost"
+  end
+
+  create_table "task_members", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "team_id"
+    t.integer "user_id"
+    t.integer "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
