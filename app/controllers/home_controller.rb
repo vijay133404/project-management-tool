@@ -36,12 +36,10 @@ class HomeController < ApplicationController
     end
     
     def assign_project_member_form
-       @teams = Team.all 
-       @users =  User.all
-       @projects = Project.all
+        @team = current_user.team
     end
     
     def assign_project_member
-
+        
     end
 end

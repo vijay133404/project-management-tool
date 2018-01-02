@@ -11,47 +11,75 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, id: :project_name %>
   </div>
-   <div class="field">
+   <div class="form-group">
     <%= form.label :client_name %>
-    <%= form.text_field :client_name, id: :project_client_name %>
+    <%= form.select(:client_name, Client.all.collect {|t| [t.name]},:prompt => 'Select Client') %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :project_type %>
    <select name="p_type">
         <option value="Fixed_Price">FixedPrice </option>
         <option value="Material">Material </option>
    </select>
   </div>
+  
+  <div class="form-group">
+    <%= form.label :technology %>
+   <%= form.select(:technology, Technology.all.collect {|t| [t.name]},:prompt => 'Select Technology') %>
+  </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :project_status %>
+   <select name="project_status">
+        <option value="Active">Active </option>
+        <option value="Pending">Pending </option>
+        <option value="Current">Current </option>
+   </select>
+  </div>
+ <div class="form-group">
+    <%= form.label :project_cost %>
+    <%= form.number_field :project_cost, id: :project_cost %>
+  </div>
+  <div class="form-group">
     <%= form.label :document %>
     <%= form.file_field :document, id: :project_document %>
   </div>
 
-  <div class="field">
-    <%= form.label :technology %>
-    <%= form.text_field :technology, id: :project_technology %>
-  </div>
+  
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description, id: :project_description %>
   </div>
-   <div class="field">
+   <div class="form-group">
     <%= form.label :start_date %>
-    <%= form.date_field :start_date %>
+    <%= form.text_field :start_date ,:id=>'datepicker'%>
   </div>
-   <div class="field">
+   <div class="form-group">
     <%= form.label :end_date %>
-    <%= form.date_field :end_date%>
+    <%= form.text_field :end_date ,:id=>'datepicker12'%>
   </div>
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
 
+<script type="text/javascript">
+
+  $('#datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+    
+});
+
+  $('#datepicker12').datepicker({
+    format: 'dd/mm/yyyy',
+
+   });
+
+</script>

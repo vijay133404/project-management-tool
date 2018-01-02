@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+
+  resources :technologies
+  resources :clients
   devise_for :users
   resources :teams
   resources :dependencies
   resources :projects do
-  	resources :tasks do
-  		resources :dependencies
-  	 end
+    	resources :tasks do
+        		resources :dependencies
+            resources :milestones
+    	 end
     end
   root to:  'home#index'
   get 'add/member', :to => 'home#addmember_form'
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   get 'assign/project/team', :to => 'home#assign_project_team_form'
   post 'submit/project/team', :to => 'home#submit_project_to_team'
   get 'all_team_project', :to => 'home#all_team_project'
-  get 'assign_project_member_form', :to => 'home#assign_project_member_form'
-  post 'assign_project_member',:to=>'home#assign_project_member'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'assign/project/member/team', :to => 'home#assign_project_member_form'
+  post 'assign/project/member/team',:to=>'home#assign_project_member'
+ 
 end

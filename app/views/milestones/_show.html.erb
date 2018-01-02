@@ -1,0 +1,9 @@
+
+<% @task.milestones.each do |milestone| %>
+    <p>
+     <strong> Milestones:-</strong> <%= milestone.name%>
+     <%= link_to 'Edit_milestone', edit_project_task_milestone_path(@project,@task,milestone) %>||
+     <td><%= link_to 'Destroy_milestone', project_task_milestone_path(@project,@task,milestone), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+   </p>
+     
+   <% end %>

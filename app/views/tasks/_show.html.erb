@@ -7,8 +7,18 @@
      <td><%= link_to 'Destroy_task', project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' } %></td> 
    </p>
    <% if @task.dependencies.first.present? %>
-    <%= render 'dependencies/show'%>
+            <%= render 'dependencies/show'%>
      
      <%end%>
+
+     <%if @task.milestones.first.present? %>
+
+      <%= render 'milestones/show'%>
+
+     <%end%>
+
     <%= render 'dependencies/form'%>
+
+    <%= render 'milestones/form'%>
+    
    <% end %>

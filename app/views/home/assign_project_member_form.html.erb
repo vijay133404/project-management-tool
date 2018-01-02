@@ -1,21 +1,23 @@
-<%= form_for :assign_project_member, url: assign_project_member_path do |f| %>
+<%= form_for :assign_project_member, url: assign_project_member_team_path do |f| %>
  
- <div class="field">
-    <%= f.label :project %>
-    
-    <%= f.select(:project_id, @projects.collect {|t| [t.name, t.id]},:prompt => 'Select projects') %>
-  </div>
-
-  <div class="field">
-    <%= f.label :team %>
-    <select name="team">
-        <%@teams.each do |t|%>
+<div class="field">
+    <%= f.label :member %>
+    <select name="member">
+        <%@team.users.each do |user|%>
         
-        <option value="<%=t.id%>"><%= t.name%></option>
-        
-        <%end%>
+        <option value="<%=user.id%>"><%= user.email%></option>
+         <%end%>
     </select>
-  </div>
-
+</div>
+<div class="field">
+    <%= f.label :member %>
+    <select name="member">
+        <%@team.projects.each do |project|%>
+        <option value="<%=project.id%>"><%= project.email%></option>
+         <%end%>
+    </select>
+</div>
+ 
  <%=f.submit%>
 <%end%>
+

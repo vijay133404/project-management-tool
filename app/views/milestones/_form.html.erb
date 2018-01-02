@@ -1,0 +1,12 @@
+<%= form_with(model: [ @project, @task, @task.milestones.build ], local: true) do |form| %>
+  
+
+  <div class="field">
+    <%= form.label :Add_Milestone %>
+    <%= form.text_field :name, id: :milestone_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
