@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-        
+       
   end
   
   def addmember_form
@@ -26,7 +26,7 @@ class HomeController < ApplicationController
     end
 
     def submit_project_to_team
-        ProjectTeam.create(project_id: params[:assign_team_project][:project_id],team_id: params[:team])
+       ProjectTeam.create(project_id: params[:assign_team_project][:project_id],team_id: params[:team])
        @teams  = Team.all
 
     end
@@ -36,11 +36,29 @@ class HomeController < ApplicationController
     end
     
     def assign_project_member_form
-
-        @team = current_user.team
+         @team =Team.find(params[:team])
     end
     
     def assign_project_member
+
         @project_user = ProjectUser.create(user_id: params[:member],project_id:params[:project])
+        
+        @team = @project_user.user.team
+        @user = @project_user.user
+        @project = @project_user.project
+    end
+
+    def all_member_assign_project
+       
+    end
+    
+    def assign_project_member_task
+       
+       @task = TaskMember.create(team_id: params[:team],project_id: params[:project],user_id: params[:user],task_id:params[:project_task_team_member][:task_id])
+       
+    end
+
+    def all_project_member_task
+        
     end
 end

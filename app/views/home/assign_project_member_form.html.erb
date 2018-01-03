@@ -1,10 +1,9 @@
-<%= form_for :assign_project_member, url: assign_project_member_team_path do |f| %>
- 
+<%= form_for :assign_project_member, url: submit_project_team_member_path do |f| %>
+
 <div class="field">
     <%= f.label :member %>
     <select name="member">
         <%@team.users.each do |user|%>
-
         <option value="<%=user.id%>"><%= user.email%></option>
          <%end%>
     </select>
@@ -21,3 +20,6 @@
  <%=f.submit%>
 <%end%>
 
+<p>
+ <%=link_to 'back',root_path %>
+</p>

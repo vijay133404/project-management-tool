@@ -21,5 +21,18 @@
 <li>
 <%= link_to 'all_team_project', all_team_project_path %>
 </li>
+<%end%>
+ <%Team.all.each do |team|%>
+  <%if team.users.first.present? && team.projects.first.present?%>
+	  <p>
+	   <%= link_to "project_#{team.name}_member", assign_project_team_member_path(team: team) %>
+	   </p>
+   <%end%>
 
 <%end%>
+<p>
+<%= link_to 'all_team_member_project', all_member_assign_project_path %>
+</p>
+<p>
+<%= link_to 'all_team_member_task', all_team_member_task_path %>
+</p>

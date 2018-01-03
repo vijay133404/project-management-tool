@@ -1,1 +1,27 @@
-asfas
+
+<p>
+   <strong>Team:</strong><%= @team.name%>
+</p>
+
+<p>
+ <strong>Member:</strong><%=@user.email%>
+</p>
+
+<p>
+    <strong>project:</strong><%= @project.name%>
+</p>
+
+<%= form_for :project_task_team_member, url: submit_project_team_member_task_path(team: @team, user: @user, project: @project) do |f| %>
+
+ <%= f.label :Member_task_assign %>
+ <%unless TaskMember.where(task_id: @project.tasks).first.present?%>
+ <p>
+ <%= f.select(:task_id, @project.tasks.collect {|t| [t.name, t.id]},:prompt => 'Select task') %>
+ </p>
+ <%end%>
+<%= f.submit %>
+<%end%>
+
+<p>
+<%= link_to 'Back', root_path %>
+</p>

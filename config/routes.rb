@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'assign/project/team', :to => 'home#assign_project_team_form'
   post 'submit/project/team', :to => 'home#submit_project_to_team'
   get 'all_team_project', :to => 'home#all_team_project'
-  get 'assign/project/member/team', :to => 'home#assign_project_member_form'
-  post 'assign/project/member/team',:to=>'home#assign_project_member'
- 
+  get 'assign/project/team/member', :to => 'home#assign_project_member_form'
+  post 'submit/project/team/member',:to=>'home#assign_project_member'
+  get'all_member/assign/project',:to=>'home#all_member_assign_project'
+  post 'submit/project/team/member/task',:to=>'home#assign_project_member_task'
+  get 'all_team/member_task',:to=>'home#all_project_member_task'
 end

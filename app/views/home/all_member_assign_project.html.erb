@@ -1,0 +1,11 @@
+<% ProjectUser.all.each do |prouser|%>
+<p>
+ <strong>project</strong> <%= Project.find(prouser.project_id).name%>
+ </p>
+ <p>
+ <strong>member</strong> <%= User.find(prouser.user_id).email%>
+ </p>
+<%end%>
+<p>
+<%= link_to 'Back', root_path %>
+</p>
