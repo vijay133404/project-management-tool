@@ -25,7 +25,7 @@
  <%Team.all.each do |team|%>
   <%if team.users.first.present? && team.projects.first.present?%>
 	  <p>
-	   <%= link_to "project_#{team.name}_member", assign_project_team_member_path(team: team) %>
+	   <%= link_to "project_#{team.name}_member", team_member_path(id: team) %>
 	   </p>
    <%end%>
 

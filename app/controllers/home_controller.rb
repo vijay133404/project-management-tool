@@ -36,7 +36,8 @@ class HomeController < ApplicationController
     end
     
     def assign_project_member_form
-         @team =Team.find(params[:team])
+      
+         @team =Team.find(params[:id])
     end
     
     def assign_project_member
