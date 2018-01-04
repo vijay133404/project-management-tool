@@ -41,7 +41,7 @@ class HomeController < ApplicationController
     end
     
     def assign_project_member
-      byebug
+ 
         @project_user = ProjectUser.create(user_id: params[:member],project_id:params[:project])
         
         @team = @project_user.user.team
