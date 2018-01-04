@@ -1,8 +1,5 @@
 <h1>Editing Milestone</h1>
-
 <%= form_with(model: [ @project, @task, @milestone ], local: true) do |form| %>
-  
-
   <div class="field">
     <%= form.label :Add_Milestone %>
     <%= form.text_field :name, id: :milestone_name %>
@@ -13,4 +10,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Back', project_tasks_path(@project) %>
+<%= link_to 'Back', project_tasks_path(@project)%>
