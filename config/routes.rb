@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   post 'submit/project/team/member',:to=>'home#assign_project_member'
   get'all_member/assign/project',:to=>'home#all_member_assign_project'
   #post 'submit/project/team/member/task',:to=>'home#assign_project_member_task'
-  post 'submit/project/:project_id/team/:team_id/member/:member_id/task/',:to=>'home#assign_project_member_task',as:"member/task/assign"
+  post 'submit/project/:project_id/team/:team_id/member/:member_id/task',:to=>'home#assign_project_member_task',as:"member/task/assign"
   get 'all_team/member_task',:to=>'home#all_project_member_task'
 end
