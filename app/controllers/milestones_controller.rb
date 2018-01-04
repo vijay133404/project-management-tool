@@ -18,13 +18,13 @@ class MilestonesController < ApplicationController
 
   def create
       @milestone = @task.milestones.new(milestone_params)
+      @milestone.save
       redirect_to project_task_milestones_path(@project,@task), notice: 'Milestone was successfully created.'
         
   end
 
   def update
       @milestone.update(milestone_params)
-    
       redirect_to project_task_milestones_path(@project,@task), notice: 'Milestone was successfully updated.' 
        
   end
