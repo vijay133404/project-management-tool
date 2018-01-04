@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          #has_many :projects
-         belongs_to :team,optional:true
+          belongs_to :team,optional:true
           has_many :project_users
           has_many :projects,:through=>:project_users
 end

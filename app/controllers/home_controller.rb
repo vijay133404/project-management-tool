@@ -41,7 +41,7 @@ class HomeController < ApplicationController
     end
     
     def assign_project_member
-
+      byebug
         @project_user = ProjectUser.create(user_id: params[:member],project_id:params[:project])
         
         @team = @project_user.user.team
@@ -55,7 +55,7 @@ class HomeController < ApplicationController
     
     def assign_project_member_task
        
-       @task = TaskMember.create(team_id: params[:team],project_id: params[:project],user_id: params[:user],task_id:params[:project_task_team_member][:task_id])
+       @task = TaskMember.create(team_id: params[:team_id],project_id: params[:project_id],user_id: params[:member_id],task_id:params[:project_task_team_member][:task_id])
        
     end
 
