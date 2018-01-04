@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:show, :edit, :update, :destroy,:create,:index]
+  before_action :set_project, only: [:show, :edit, :update, :destroy,:create,:index,:new]
  
   def index
     @tasks = Task.all
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
 
     @task = @project.tasks.new(task_params)
       if @task.save
-         redirect_to project_path(@project), notice: 'Task was successfully created.'
+         redirect_to project_tasks_path(@project), notice: 'Task was successfully created.'
       else
          render :new 
       end
@@ -31,13 +31,13 @@ class TasksController < ApplicationController
   def update
 
          @task.update(task_params)
-         redirect_to project_path(@project), notice: 'Task was successfully updated.' 
+         redirect_to project_tasks_path(@project,@task), notice: 'Task was successfully updated.' 
   end
 
 
   def destroy
     @task.destroy
-      redirect_to project_path(@project), notice: 'Task was successfully destroyed.'
+      redirect_to project_tasks_path(@project,@task), notice: 'Task was successfully destroyed.'
   end
 
   private
