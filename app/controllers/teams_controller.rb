@@ -68,7 +68,7 @@ class TeamsController < ApplicationController
   end
   
   def assign_project_team
-   @projects=Project.all
+    @projects = Project.all
 
   end
 

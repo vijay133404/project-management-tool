@@ -7,14 +7,14 @@
 
   <div class="field">
     <%= f.label :member %>
-    <select name="member">
-        
+    <select name="member" id="dropdown">
         <%@users.each do |user|%>
         <%unless user.team.present?%>
         <option value="<%=user.id%>"><%=user.email%></option>
        <%end%>
         <%end%>
     </select>
+    <%= f.select(:user_id, @users.collect {|user| [user.name, user.id]},:prompt => 'Select user',id:'select_user') %>
   </div>
   
   <p>
@@ -23,3 +23,9 @@
 <% end %>
 
 <%= link_to 'Back', teams_path %>
+
+<script type="text/javascript">
+  $( "#dropdown" ).select2({
+    theme: "bootstrap"
+});
+</script>

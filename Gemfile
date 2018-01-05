@@ -57,3 +57,4 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
 gem 'bootstrap-datepicker-rails'
+gem "select2-rails"
