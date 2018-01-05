@@ -1,0 +1,17 @@
+<% TaskMember.all.each do |task| %>
+	<%if task.team_id == team.id%>
+		<p>
+		  <strong>Project:</strong> <%= Project.find(task.project_id).name%>
+		</p>
+		<p>
+		  <strong>Team:</strong> <%= Team.find(task.team_id).name%>
+		</p>
+		<p>
+		  <strong>user:</strong> <%= link_to "#{User.find(task.user_id).email}",projects_user_team_path(user_id:User.find(task.user_id).id)%>
+		</p>
+		<p>
+		  <strong>Task:</strong> <%= Task.find(task.task_id).name%>
+		</p>
+	<% end %>
+<% end %>
+ 

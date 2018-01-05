@@ -2,9 +2,7 @@
 
   <div class="field">
   <p> Team:- <%=Team.find(params[:id]).name%></p>
-    <%#= f.label :'Team.find(params[:id].name)' %>
     <%= f.hidden_field :team_id, :value => params[:id] %>
-    <%#= f.select(:team_id, @teams.collect {|t| [t.name, t.id]},:prompt => 'Select team') %>
   </div>
 
   <div class="field">

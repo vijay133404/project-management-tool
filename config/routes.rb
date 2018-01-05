@@ -12,22 +12,28 @@ Rails.application.routes.draw do
     end
   resources :teams do
     member do
-      get 'add_member'
+      get 'add_member_team'
       post'submit_member'
+      get 'assign_project_team'
+      post 'submit_project'
+      get 'assign_project_member'
+      post'submit_project_member'
+      post 'project/:project_id/member/:member_id/task',:to => 'teams#project_member_task',as: 'project/task'
+      get'user/:user_id/projects',:to => 'teams#user_projects',as:'projects/user'
     end
   end
 
   root to:  'home#index'
   # get 'add/member', :to => 'home#addmember_form'
   # post 'submit/member', :to => 'home#add_member_to_team'
-  get 'team/members', :to => 'home#team_and_members'
-  get 'assign/project/team', :to => 'home#assign_project_team_form'
-  post 'submit/project/team', :to => 'home#submit_project_to_team'
-  get 'all_team_project', :to => 'home#all_team_project'
-  get 'team/:id/member', :to => 'home#assign_project_member_form', as:'team/member'
-  post 'submit/project/team/member',:to=>'home#assign_project_member'
-  get'all_member/assign/project',:to=>'home#all_member_assign_project'
+  # get 'team/members', :to => 'home#team_and_members'
+  # get 'assign/project/team', :to => 'home#assign_project_team_form'
+  # post 'submit/project/team', :to => 'home#submit_project_to_team'
+  # get 'all_team_project', :to => 'home#all_team_project'
+  # get 'team/:id/member', :to => 'home#assign_project_member_form', as:'team/member'
+  # post 'submit/project/team/member',:to=>'home#assign_project_member'
+  # get'all_member/assign/project',:to=>'home#all_member_assign_project'
   #post 'submit/project/team/member/task',:to=>'home#assign_project_member_task'
-  post 'submit/project/:project_id/team/:team_id/member/:member_id/task',:to=>'home#assign_project_member_task',as:"member/task/assign"
-  get 'all_team/member_task',:to=>'home#all_project_member_task'
+  # post 'submit/project/:project_id/team/:team_id/member/:member_id/task',:to=>'home#assign_project_member_task',as:"member/task/assign"
+  # get 'all_team/member_task',:to=>'home#all_project_member_task'
 end

@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
+<p>
+    <strong>Name:</strong>
+    <%= @team.name %>
+</p>
+<%if @team.users.first.present? %>
+ <h3>Assign <%= @team.name %> Members</h3>
+    <%@team.users.each do |user|%>
+        <p>
+            <strong>Member:</strong>
+            <%=user.email%>
+        </p>
+    <%end%>
+  <% end %>  
+        <%if @team.projects.first.present?%>
+            <h3> Assign project to <%= @team.name %></h4>
+           <% @team.projects.each do |project|%>
+                <p>
+                <strong>Project:</strong>
+                    <%=project.name%>
+                </p>
+             <%end%>
+        <%end%>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-<p>
-<%@team.users.each do |user|%>
-<p>
-  <strong>Member:</strong><%=user.email%>
-</p>
+<% if TaskMember.where(team_id: @team.id).first.present? %>
+    <h3>Assign <%= @team.name %> Member project task</h3>
+
+    <%=render 'team_member_project_task' ,team: @team %>
 <%end%>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

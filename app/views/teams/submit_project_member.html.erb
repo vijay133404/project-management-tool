@@ -1,0 +1,27 @@
+<p>
+   <strong>Team:</strong><%= @team.name%>
+</p>
+
+<p>
+ <strong>Member:</strong><%=@user.email%>
+</p>
+
+<p>
+    <strong>project:</strong><%=@project.name%>
+</p>
+
+
+<%= form_for :project_member_task, url: project_task_team_path(project_id: @project, member_id: @user) do |f| %>
+
+	 <%= f.label :Member_task_assign %>
+	   <%unless TaskMember.where(task_id: @project.tasks).first.present?%>
+		 <p>
+		 <%= f.select(:task_id, @project.tasks.collect {|t| [t.name, t.id]},:prompt => 'Select task') %>
+		  </p>
+	       <%= f.submit %>
+	    <%else%>
+	      <p>Alredy Assign Task</p>
+	 <%end%>
+
+<%end%>
+<%= link_to 'Back', teams_path %>

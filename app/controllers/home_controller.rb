@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   end
 
   def add_member_to_team
-    if params[:member].present?
+   if params[:member].present?
     User.find(params[:member]).update(team_id: params[:team_member][:team_id])
   end
     @teams  = Team.all

@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Assign Member</th>
+      <th>Assign project</th>
+      <th>Assign project member</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,7 +17,9 @@
     <%@teams.each do |team| %>
       <tr>
         <td><%= team.name %></td>
-        <td><%= link_to "add #{team.name} member", add_member_team_path(team)%></td>
+        <td><%= link_to "add #{team.name} member", add_member_team_team_path(team)%></td>
+        <td><%= link_to "assign projects#{team.name} ", assign_project_team_team_path(team)%></td>
+        <td><%= link_to "assign projects#{team.name}member", assign_project_member_team_path(team)%></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Add Team',new_team_path %>

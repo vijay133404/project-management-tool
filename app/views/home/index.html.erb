@@ -18,32 +18,3 @@
 <li>
   <%= link_to 'create Technology',new_technology_path %>
 </li>
-
-<%if Team.first.present?%>
-<li>
-<%#= link_to 'Add Team Members', add_member_path %>
-</li>
-<li>
-<%= link_to 'Team and Members', team_members_path %>
-</li>
-<li>
-<%= link_to 'assign_project_to_team', assign_project_team_path %>
-</li>
-<li>
-<%= link_to 'all_team_project', all_team_project_path %>
-</li>
-<%end%>
- <%Team.all.each do |team|%>
-  <%if team.users.first.present? && team.projects.first.present?%>
-	  <p>
-	   <%= link_to "project_#{team.name}_member", team_member_path(id: team) %>
-	   </p>
-   <%end%>
-
-<%end%>
-<p>
-<%= link_to 'all_team_member_project', all_member_assign_project_path %>
-</p>
-<p>
-<%= link_to 'all_team_member_task', all_team_member_task_path %>
-</p>
