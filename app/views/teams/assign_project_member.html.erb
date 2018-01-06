@@ -1,19 +1,11 @@
 <%= form_for :assign_project_member, url: submit_project_member_team_path do |f| %>
     <div class="field">
     <%= f.label :member %>
-    <select name="member">
-        <%@team.users.each do |user|%>
-        <option value="<%=user.id%>"><%= user.email%></option>
-         <%end%>
-    </select>
+     <%= f.select(:user_id, @team.users.collect {|u| [ u.email, u.id ] }, { include_blank: true },class: "form-control", :required => true)%>
 </div>
 <div class="field">
     <%= f.label :project %>
-    <select name="project">
-        <%@team.projects.each do |project|%>
-        <option value="<%=project.id%>"><%= project.name%></option>
-         <%end%>
-    </select>
+    <%= f.select(:project_id, @team.projects.collect {|project| [ project.email, project.id ] }, { include_blank: true },class: "form-control", :required => true)%>
 </div>
  
  <%=f.submit%>

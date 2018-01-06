@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy,:submit_project_member,:project_member_task]
+  before_action :set_team, only: [:show, :edit, :update, :destroy,:submit_project_member,:project_member_task,:assign_project_team]
 
   def index
     @teams = Team.all
@@ -80,10 +80,11 @@ class TeamsController < ApplicationController
 
    def assign_project_member
      @team = Team.find(params[:id])
+      @users =  User.all
    end
 
   def submit_project_member
-    
+        @users =  User.all
         @user = User.find(params[:member])
         @project = Project.find(params[:project])
         @team = @user.team

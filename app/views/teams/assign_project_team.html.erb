@@ -9,11 +9,8 @@
 
   <div class="field">
     <%= f.label :projects %>
-    <select name="project">
-        <%@projects.each do |project|%>
-        <option value="<%=project.id%>"><%=project.name%></option>
-        <%end%>
-    </select>
+   
+   <%= f.select(:project_id, @projects.collect {|p| [ p.name, p.id ] }, { include_blank: true }, id: 'assign_projects', prompt: 'select project',  multiple: "multiple", required: true)%>
   </div>
   
   <p>
@@ -22,3 +19,10 @@
 <% end %>
 
 <%= link_to 'Back', teams_path %>
+
+<script type="text/javascript">
+  $( "#assign_projects" ).select2({
+      multiple:true,
+  });
+  
+</script>
