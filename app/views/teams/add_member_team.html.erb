@@ -6,15 +6,9 @@
   </div>
 
   <div class="field">
-    <%= f.label :member %>
-    <select name="member" id="dropdown">
-        <%@users.each do |user|%>
-        <%unless user.team.present?%>
-        <option value="<%=user.id%>"><%=user.email%></option>
-       <%end%>
-        <%end%>
-    </select>
-    <%= f.select(:user_id, @users.collect {|user| [user.name, user.id]},:prompt => 'Select user',id:'select_user') %>
+    <%#= f.select(:user_id, @users.collect {|user| [user.email, user.id]},:prompt => 'Select user',id:'select_user') %>
+    <%=f.label :user%>
+    <%= f.select(:user_id, @users.collect {|u| [ u.email, u.id ] }, { include_blank: true }, id: 'assign_team_user', prompt: 'select user', class: "form-control", required: true)%>
   </div>
   
   <p>
@@ -25,7 +19,7 @@
 <%= link_to 'Back', teams_path %>
 
 <script type="text/javascript">
-  $( "#dropdown" ).select2({
+  $( "#assign_team_user" ).select2({
     theme: "bootstrap"
 });
 </script>

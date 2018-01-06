@@ -60,8 +60,8 @@ class TeamsController < ApplicationController
   end
 
   def submit_member
-    if params[:member].present?
-    User.find(params[:member]).update(team_id: params[:team_member][:team_id])
+    if params[:team_member][:user_id].present?
+    User.find(params[:team_member][:user_id]).update(team_id: params[:team_member][:team_id])
    end
     @teams  = Team.all
     redirect_to team_path(params[:team_member][:team_id])
@@ -73,7 +73,6 @@ class TeamsController < ApplicationController
   end
 
   def submit_project
-
     ProjectTeam.create(project_id: params[:project],team_id:params[:assign_project][:team_id])
     redirect_to team_path(params[:assign_project][:team_id])
 
